@@ -80,13 +80,15 @@ def createYearDictionary(hurricanes):
         currentHurricane = hurricanes[hurricane]
         # Evaluate if the year is present in empty dictrionary, if not, add it
         if currentHurricaneYear not in hurricanesByYear:
-            hurricanesByYear[currentHurricaneYear] = currentHurricaneYear
+            # newDictionaryName[Year Key Value] = hurricane data
+            hurricanesByYear[currentHurricaneYear] = currentHurricane
         else :
             hurricanesByYear[currentHurricaneYear] = currentHurricane
     return hurricanesByYear
 # Create Dictionary using the new function
 hurricanesByYear = createYearDictionary(hurricanes)
-print(hurricanesByYear[2017])
+# Should print out Last value of every existing list
+print(hurricanesByYear[2018])
 # write your count affected areas function here:
 
 
