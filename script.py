@@ -123,15 +123,20 @@ def mostAffectedArea(affectedAreasCount):
     return f"The area with the most affected by hurricanes is {maxArea} with a count of {maxAreaCount} hurricanes"
 
 maxAffectedAreaInfo = mostAffectedArea(affectedAreasCount)
-print(maxAffectedAreaInfo)
+# print(maxAffectedAreaInfo)
 # write your greatest number of deaths function here:
+def deadliestHurricane(hurricanes):
+    deadliestHurricane = ""
+    hurricaneDeathCount = 0
 
+    for singleHurricane in hurricanes:
+        if hurricanes[singleHurricane]['Death Toll'] > hurricaneDeathCount:
+            deadliestHurricane = hurricanes[singleHurricane]['Name']
+            hurricaneDeathCount = hurricanes[singleHurricane]["Death Toll"]
+    return f"The deadliest hurricane in the dataset is {deadliestHurricane} with {hurricaneDeathCount} deaths"
 
-
-
-
-
-
+deadliestHurricaneInfo = deadliestHurricane(hurricanes)
+print(deadliestHurricaneInfo)
 # write your catgeorize by mortality function here:
 
 
