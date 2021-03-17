@@ -100,27 +100,30 @@ def countAffectedAreas(hurricanes):
             if area not in affectedAreasCount:
                 affectedAreasCount[area] = 1
             else:
-                affectedAreasCount[area] += 1;
+                affectedAreasCount[area] += 1
     return affectedAreasCount
 
 # Populate affectedAreasCount dictionary by calling function
 affectedAreasCount = countAffectedAreas(hurricanes)
 # test if it worked by printing area as key and number of how many areas is present in hurricane dictionary
-print(affectedAreasCount)
-
-
-
-
-
+# print(affectedAreasCount)
 
 # write your find most affected area function here:
+def mostAffectedArea(affectedAreasCount):
+    # Value will be updated in Evaluation block
+    maxAreaCount = 0
+    maxArea = ""
 
+    # Iterate through the affectedAreasCount dictionary
+    for area in affectedAreasCount:
+        # area = key
+        if affectedAreasCount[area] > maxAreaCount:
+            maxArea = area
+            maxAreaCount += affectedAreasCount[area]
+    return f"The area with the most affected by hurricanes is {maxArea} with a count of {maxAreaCount} hurricanes"
 
-
-
-
-
-
+maxAffectedAreaInfo = mostAffectedArea(affectedAreasCount)
+print(maxAffectedAreaInfo)
 # write your greatest number of deaths function here:
 
 
