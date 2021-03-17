@@ -47,23 +47,24 @@ updatedDamages = convertDamageData(damages)
 # Test - Output should be converted values
 print(updatedDamages)
 # write your construct hurricane dictionary function here:
-def createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected, deaths):
+def createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected,updatedDamages, deaths):
     hurricanes = {}
     numHurricanes = len(names)
 
     # Iterate through various lists to get values and add to dictionary
     for i in range(numHurricanes):
-        hurricanes = {
+        hurricanes[names[i]] = {
             "Name": names[i],
             "Month": months[i],
             "Year": years[i],
             "Max Winds": max_sustained_winds[i],
             "Areas Affected": areas_affected[i],
+            "Damages": updatedDamages[i],
             "Death Toll": deaths[i]
         }
     return hurricanes
 # Test via calling/printing
-hurricanes = createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected, deaths)
+hurricanes = createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected, updatedDamages, deaths)
 print(hurricanes)
 
 # write your construct hurricane by year dictionary function here:
