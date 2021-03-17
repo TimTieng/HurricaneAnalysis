@@ -88,9 +88,25 @@ def createYearDictionary(hurricanes):
 # Create Dictionary using the new function
 hurricanesByYear = createYearDictionary(hurricanes)
 # Should print out Last value of every existing list
-print(hurricanesByYear[2018])
+# print(hurricanesByYear[2018])
 # write your count affected areas function here:
+def countAffectedAreas(hurricanes):
+    affectedAreasCount = {}
 
+    # nested loop - iterate through hurricanes dict and affected_areas list, update count
+    for singleHurricane in hurricanes:
+        for area in hurricanes[singleHurricane]['Areas Affected']:
+            # Evaluate if area is present in affectedAreasCount, if so, increase count
+            if area not in affectedAreasCount:
+                affectedAreasCount[area] = 1
+            else:
+                affectedAreasCount[area] += 1;
+    return affectedAreasCount
+
+# Populate affectedAreasCount dictionary by calling function
+affectedAreasCount = countAffectedAreas(hurricanes)
+# test if it worked by printing area as key and number of how many areas is present in hurricane dictionary
+print(affectedAreasCount)
 
 
 
