@@ -45,9 +45,11 @@ def convertDamageData(damages):
 # call the function and save it to the updated damages list
 updatedDamages = convertDamageData(damages)
 # Test - Output should be converted values
-print(updatedDamages)
+# print(updatedDamages)
+
 # write your construct hurricane dictionary function here:
 def createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected,updatedDamages, deaths):
+    # Empty Dictionary
     hurricanes = {}
     numHurricanes = len(names)
 
@@ -65,16 +67,26 @@ def createHurricaneDictionary(names, months, years, max_sustained_winds,areas_af
     return hurricanes
 # Test via calling/printing
 hurricanes = createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected, updatedDamages, deaths)
-print(hurricanes)
+# print(hurricanes)
 
-# write your construct hurricane by year dictionary function here:
+# function that creates a dictionary using Year as a Key and returns hurricane values if one occurred that year:
+def createYearDictionary(hurricanes):
+    # Empty Dictionary to populate in iteration block
+    hurricanesByYear = {}
 
-
-
-
-
-
-
+    # Iterate
+    for hurricane in hurricanes:
+        currentHurricaneYear = hurricanes[hurricane]["Year"]
+        currentHurricane = hurricanes[hurricane]
+        # Evaluate if the year is present in empty dictrionary, if not, add it
+        if currentHurricaneYear not in hurricanesByYear:
+            hurricanesByYear[currentHurricaneYear] = currentHurricaneYear
+        else :
+            hurricanesByYear[currentHurricaneYear] = currentHurricane
+    return hurricanesByYear
+# Create Dictionary using the new function
+hurricanesByYear = createYearDictionary(hurricanes)
+print(hurricanesByYear[2017])
 # write your count affected areas function here:
 
 
