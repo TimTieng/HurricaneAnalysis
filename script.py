@@ -47,7 +47,9 @@ def convertDamageData(damages):
 # call the function and save it to the updated damages list
 updatedDamages = convertDamageData(damages)
 # Test - Output should be converted values
-# print(updatedDamages)
+print("Here is the updated damages list:\n")
+print(updatedDamages)
+print("--------------")
 
 # write your construct hurricane dictionary function here:
 def createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected,updatedDamages, deaths):
@@ -69,8 +71,9 @@ def createHurricaneDictionary(names, months, years, max_sustained_winds,areas_af
     return hurricanes
 # Test via calling/printing
 hurricanes = createHurricaneDictionary(names, months, years, max_sustained_winds,areas_affected, updatedDamages, deaths)
-# print(hurricanes)
-
+print("Here is the new dictionary with values of updated damages list:\n")
+print(hurricanes)
+print("--------------")
 # function that creates a dictionary using Year as a Key and returns hurricane values if one occurred that year:
 def createYearDictionary(hurricanes):
     # Empty Dictionary to populate in iteration block
@@ -90,7 +93,9 @@ def createYearDictionary(hurricanes):
 # Create Dictionary using the new function
 hurricanesByYear = createYearDictionary(hurricanes)
 # Should print out Last value of every existing list
-# print(hurricanesByYear[2018])
+print("Here is a dictionary that lists Hurricanes that occured in a certain year:\n")
+print(hurricanesByYear[2007])
+print("--------------")
 # write your count affected areas function here:
 def countAffectedAreas(hurricanes):
     affectedAreasCount = {}
@@ -122,10 +127,11 @@ def mostAffectedArea(affectedAreasCount):
         if affectedAreasCount[area] > maxAreaCount:
             maxArea = area
             maxAreaCount += affectedAreasCount[area]
-    return f"The area with the most affected by hurricanes is {maxArea} with a count of {maxAreaCount} hurricanes"
+    return f"The area with the most affected by hurricanes is {maxArea} with a count of {maxAreaCount} hurricanes\n"
 
 maxAffectedAreaInfo = mostAffectedArea(affectedAreasCount)
-# print(maxAffectedAreaInfo)
+print(maxAffectedAreaInfo)
+print("--------------")
 # write your greatest number of deaths function here:
 def deadliestHurricane(hurricanes):
     deadliestHurricane = ""
@@ -164,13 +170,13 @@ def hurricaneMortalityCategory(hurricanes):
             hurricanesByMortalityRating[3].append(hurricanes[singleHurricane])
         elif totalDeathsByHurricane > mortalityScale[4]:
             hurricanesByMortalityRating[4].append(hurricanes[singleHurricane])
-    print("Here are the hurricanes categorized by their mortality scale")
+    print("Here are the hurricanes categorized by their mortality scale\n")
     return hurricanesByMortalityRating
 
 #Test - should return hurricanes with deaths over 10000g
 hurricanesMortalityRating = hurricaneMortalityCategory(hurricanes)
-# print(hurricanesMortalityRating[3])
-
+print(hurricanesMortalityRating[3])
+print("--------------")
 # greatest damage in terms of cost function: SHOULD BE SIMILAR AS MORTALITY CATEGORY FUNCTION
 def categorizeHurricaneByDamageCost(hurricanes):
     # create a Damage scale that maps levels to damage totals
@@ -204,10 +210,28 @@ def categorizeHurricaneByDamageCost(hurricanes):
             hurricanesByTotalDamage[4].append(hurricanes[singleHurricane])
         elif totalDamageCosts > damageScale[4]:
             hurricanesByTotalDamage[5].append(hurricanes[singleHurricane])
-    print("Here are the hurricanes categorized by damage cost ratings:")
+    print("Here are the hurricanes categorized by damage cost ratings:\n")
     return hurricanesByTotalDamage
         
 
 hurricanesByTotalDamage = categorizeHurricaneByDamageCost(hurricanes)
 # Printing by calling the Key should result in hurriances with damages within the respective ranges in evaluation block
 print(hurricanesByTotalDamage[3])
+print("--------------")
+
+# create a function that returns the highest damage Hurricane and its damage cost
+
+def highestDamageCost(hurricanes):
+    maxDamageHurricane = ""
+    maxDamageCost = 0
+
+    for singleHurricane in hurricanes:
+        if hurricanes[singleHurricane]["Damages"] == "Damages not recorded":
+            pass
+        elif hurricanes[singleHurricane]["Damages"] > maxDamageCost:
+            maxDamageHurricane = singleHurricane
+            maxDamageCost = hurricanes[singleHurricane]['Damages']
+    return f"The hurricane that incurred the most damage costs is Hurricane {maxDamageHurricane} with a total damage cost of ${maxDamageCost}."
+
+maxDamageHurricaneInfo = highestDamageCost(hurricanes)
+print(maxDamageHurricaneInfo)
