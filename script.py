@@ -164,9 +164,10 @@ def hurricaneMortalityCategory(hurricanes):
             hurricanesByMortalityRating[3].append(hurricanes[singleHurricane])
         elif totalDeathsByHurricane > mortalityScale[4]:
             hurricanesByMortalityRating[4].append(hurricanes[singleHurricane])
+    print("Here are the hurricanes categorized by their mortality scale")
     return hurricanesByMortalityRating
 
-#Test - should return hurricanes with deaths over 10000
+#Test - should return hurricanes with deaths over 10000g
 hurricanesMortalityRating = hurricaneMortalityCategory(hurricanes)
 print(hurricanesMortalityRating[3])
 
