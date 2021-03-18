@@ -36,7 +36,9 @@ def convertDamageData(damages):
     for damage in damages:
         if damage == "Damages not recorded":
             updatedDamages.append(damage)
+        # if the find() method does not return -1 (value not found) execute code 
         if damage.find("M") != -1:
+            # add converted value to dictionary as a float by multiplying the value of Key "M"
             updatedDamages.append(float(damage[0:damage.find("M")]) * conversion["M"])
         if damage.find("B") != -1:
             updatedDamages.append(float(damage[0:damage.find("B")]) * conversion["B"])
@@ -138,12 +140,35 @@ def deadliestHurricane(hurricanes):
 deadliestHurricaneInfo = deadliestHurricane(hurricanes)
 print(deadliestHurricaneInfo)
 # write your catgeorize by mortality function here:
+def hurricaneMortalityCategory(hurricanes):
+    # Mortality dictionary will be used to combine data
+    mortalityScale = {0: 0, 1: 100, 2: 500, 3: 1000, 4: 10000}
 
+    # Declare and initialize new dictionary with mortality scale as key, 
+    # and empty list as the value to be populated later
+    hurricanesByMortalityRating = {0: [], 1: [], 2: [], 3: [], 4: [], 5: []}
 
+    # Iterate through hurricanes and evaluate if their deaths is within a range 
+    for singleHurricane in hurricanes:
+        totalDeathsByHurricane = hurricanes[singleHurricane]['Death Toll']
+        # Evaluate by comapring tDBH var ^ to 
+        if totalDeathsByHurricane == mortalityScale[0]:
+            hurricanesByMortalityRating[0].append(hurricanes[singleHurricane])
+        elif totalDeathsByHurricane > mortalityScale[0] and totalDeathsByHurricane <= mortalityScale[1]:
+            hurricanesByMortalityRating[1].append(hurricanes[singleHurricane])
+        elif totalDeathsByHurricane > mortalityScale[1] and totalDeathsByHurricane < mortalityScale[2]:
+            hurricanesByMortalityRating[2].append(hurricanes[singleHurricane])
+        elif totalDeathsByHurricane > mortalityScale[2] and totalDeathsByHurricane <= mortalityScale[3]:
+            hurricanesByMortalityRating[3].append(hurricanes[singleHurricane])
+        elif totalDeathsByHurricane > mortalityScale[3] and totalDeathsByHurricane <= mortalityScale[4]:
+            hurricanesByMortalityRating[4].append(hurricanes[singleHurricane])
+        elif totalDeathsByHurricane > mortalityScale[4]:
+            hurricanesByMortalityRating[5].append(hurricanes[singleHurricane])
+    return hurricanesByMortalityRating
 
-
-
-
+#Test
+hurricanesMortalityRating = hurricaneMortalityCategory(hurricanes)
+print(hurricanesMortalityRating[4])
 
 # write your greatest damage function here:
 
