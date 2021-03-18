@@ -138,7 +138,7 @@ def deadliestHurricane(hurricanes):
     return f"The deadliest hurricane in the dataset is {deadliestHurricane} with {hurricaneDeathCount} deaths"
 
 deadliestHurricaneInfo = deadliestHurricane(hurricanes)
-print(deadliestHurricaneInfo)
+# print(deadliestHurricaneInfo)
 # write your catgeorize by mortality function here:
 def hurricaneMortalityCategory(hurricanes):
     # Mortality dictionary will be used to combine data
@@ -169,14 +169,45 @@ def hurricaneMortalityCategory(hurricanes):
 
 #Test - should return hurricanes with deaths over 10000g
 hurricanesMortalityRating = hurricaneMortalityCategory(hurricanes)
-print(hurricanesMortalityRating[3])
+# print(hurricanesMortalityRating[3])
 
-# write your greatest damage function here:
+# greatest damage in terms of cost function: SHOULD BE SIMILAR AS MORTALITY CATEGORY FUNCTION
+def categorizeHurricaneByDamageCost(hurricanes):
+    # create a Damage scale that maps levels to damage totals
+    damageScale = { 0: 0,
+                    1: 100000000,
+                    2: 1000000000,
+                    3: 10000000000,
+                    4: 50000000000}
+    # create empty dictionary to be populated using damage scale rating as key mapping to an empty list
+    hurricanesByTotalDamage = { 0: [], 
+                                1: [], 
+                                2: [], 
+                                3: [], 
+                                4: [],
+                                5: []}
+    for singleHurricane in hurricanes:
+        # new variable that will st
+        totalDamageCosts = hurricanes[singleHurricane]["Damages"]
+        # Evaluate then append to list uing key value
+        if totalDamageCosts == "Damages not recorded":
+            hurricanesByTotalDamage[0].append(hurricanes[singleHurricane])
+        elif totalDamageCosts == damageScale[0]:
+            hurricanesByTotalDamage[0].append(hurricanes[singleHurricane])
+        elif totalDamageCosts > damageScale[0] and totalDamageCosts <= damageScale[1]:
+            hurricanesByTotalDamage[1].append(hurricanes[singleHurricane])
+        elif totalDamageCosts > damageScale[1] and totalDamageCosts <= damageScale[2]:
+            hurricanesByTotalDamage[2].append(hurricanes[singleHurricane])
+        elif totalDamageCosts > damageScale[2] and totalDamageCosts <= damageScale[3]:
+            hurricanesByTotalDamage[3].append(hurricanes[singleHurricane])
+        elif totalDamageCosts > damageScale[3] and totalDamageCosts <= damageScale[4]:
+            hurricanesByTotalDamage[4].append(hurricanes[singleHurricane])
+        elif totalDamageCosts > damageScale[4]:
+            hurricanesByTotalDamage[5].append(hurricanes[singleHurricane])
+    print("Here are the hurricanes categorized by damage cost ratings:")
+    return hurricanesByTotalDamage
+        
 
-
-
-
-
-
-
-# write your catgeorize by damage function here:
+hurricanesByTotalDamage = categorizeHurricaneByDamageCost(hurricanes)
+# Printing by calling the Key should result in hurriances with damages within the respective ranges in evaluation block
+print(hurricanesByTotalDamage[3])
