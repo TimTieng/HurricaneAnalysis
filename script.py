@@ -155,20 +155,20 @@ def hurricaneMortalityCategory(hurricanes):
         if totalDeathsByHurricane == mortalityScale[0]:
             hurricanesByMortalityRating[0].append(hurricanes[singleHurricane])
         elif totalDeathsByHurricane > mortalityScale[0] and totalDeathsByHurricane <= mortalityScale[1]:
+            hurricanesByMortalityRating[0].append(hurricanes[singleHurricane])
+        elif totalDeathsByHurricane > mortalityScale[1] and totalDeathsByHurricane <= mortalityScale[2]:
             hurricanesByMortalityRating[1].append(hurricanes[singleHurricane])
-        elif totalDeathsByHurricane > mortalityScale[1] and totalDeathsByHurricane < mortalityScale[2]:
-            hurricanesByMortalityRating[2].append(hurricanes[singleHurricane])
         elif totalDeathsByHurricane > mortalityScale[2] and totalDeathsByHurricane <= mortalityScale[3]:
-            hurricanesByMortalityRating[3].append(hurricanes[singleHurricane])
+            hurricanesByMortalityRating[2].append(hurricanes[singleHurricane])
         elif totalDeathsByHurricane > mortalityScale[3] and totalDeathsByHurricane <= mortalityScale[4]:
-            hurricanesByMortalityRating[4].append(hurricanes[singleHurricane])
+            hurricanesByMortalityRating[3].append(hurricanes[singleHurricane])
         elif totalDeathsByHurricane > mortalityScale[4]:
-            hurricanesByMortalityRating[5].append(hurricanes[singleHurricane])
+            hurricanesByMortalityRating[4].append(hurricanes[singleHurricane])
     return hurricanesByMortalityRating
 
-#Test
+#Test - should return hurricanes with deaths over 10000
 hurricanesMortalityRating = hurricaneMortalityCategory(hurricanes)
-print(hurricanesMortalityRating[4])
+print(hurricanesMortalityRating[3])
 
 # write your greatest damage function here:
 
